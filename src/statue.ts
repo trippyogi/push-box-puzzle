@@ -1,9 +1,9 @@
-import utils from "../node_modules/decentraland-ecs-utils/index"
-import { checkSolution, finishGame } from "./puzzleBuilder"
-import { Sound } from "./sound"
+import * as utils from '@dcl/ecs-scene-utils'
+import { checkSolution, finishGame } from './puzzleBuilder'
+import { Sound } from './sound'
 
 // Sounds
-const statueMoveSound = new Sound(new AudioClip("sounds/statueMove.mp3"), false)
+const statueMoveSound = new Sound(new AudioClip('sounds/statueMove.mp3'), false)
 
 export class Statue extends Entity {
   public symbol = new Entity()
@@ -15,11 +15,11 @@ export class Statue extends Entity {
     this.addComponent(statue)
     this.addComponent(transform)
 
-    this.symbol.addComponent(new GLTFShape("models/symbol.glb"))
+    this.symbol.addComponent(new GLTFShape('models/symbol.glb'))
     this.symbol.addComponent(new Transform())
     this.symbol.setParent(this)
 
-    this.symbolGlow.addComponent(new GLTFShape("models/symbolGlow.glb"))
+    this.symbolGlow.addComponent(new GLTFShape('models/symbolGlow.glb'))
     this.symbolGlow.addComponent(new Transform())
     this.symbolGlow.getComponent(Transform).scale.setAll(0)
     this.symbolGlow.setParent(this)
