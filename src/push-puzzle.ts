@@ -17,15 +17,15 @@ export class PushPuzzle {
     engine.addEntity(this.room);
   }
 
-  fire(e: any): void {
-    if (e.hit.meshName == 'statue_collider') {
-      let statue = engine.entities[e.hit.entityId] as Statue;
+  fire(event: any): void {
+    if (event.hit.meshName == 'statue_collider') {
+      let statue = engine.entities[event.hit.entityId] as Statue;
       let statuePos = statue.getComponent(Transform).position;
       let distance = Vector3.Distance(statuePos, Camera.instance.position);
       if (distance < MAX_DISTANCE) {
         let currentPos = statue.getComponent(Transform).position;
         let endPos = currentPos.subtract(
-          e.hit.normal.multiplyByFloats(2, 2, 2)
+          event.hit.normal.multiplyByFloats(2, 2, 2)
         );
 
         // Checks if anything is blocking the statue's path
